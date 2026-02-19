@@ -1,1 +1,113 @@
-# Notion-card
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>小秦小呦同學錄</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:"Noto Sans TC",sans-serif}
+html,body{
+  width:100%;
+  height:100%;
+  background:#fdf2f8;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+.box{
+  width:100%;
+  text-align:center;
+  padding:12px 20px;
+  position:relative;
+  z-index:2;
+}
+.line{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  font-size:16px;
+  white-space:nowrap;
+}
+.hl{
+  background:linear-gradient(90deg,#ff80ab,#4fc3f7);
+  color:#fff;
+  padding:4px 10px;
+  border-radius:6px;
+  font-weight:500;
+}
+.num{display:flex;gap:4px;}
+.d{
+  width:26px;
+  height:32px;
+  background:#fff;
+  border:2px solid #f8bbd0;
+  font-size:17px;
+  font-weight:bold;
+  color:#1976d2;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  clip-path:polygon(25% 0%,75% 0%,100% 25%,100% 70%,75% 100%,25% 100%,0% 70%,0% 25%);
+}
+.bottom{
+  margin-top:8px;
+  font-size:12px;
+  color:#777;
+}
+.bottom a{
+  color:#1976d2;
+  text-decoration:none;
+}
+
+/* 動態小花樣式 */
+.flower {
+  position:fixed;
+  font-size:14px;
+  animation:flower-fall 5s linear infinite;
+  pointer-events:none;
+  z-index:1;
+}
+@keyframes flower-fall {
+  0% { transform: translateY(-10px) rotate(0deg); opacity:1; }
+  100% { transform: translateY(300px) rotate(720deg); opacity:0; }
+}
+</style>
+</head>
+<body>
+<div class="box">
+  <div class="line">
+    你是「<span class="hl">小秦小呦同學錄</span>」的第
+    <div class="num">
+      <div class="d">0</div>
+      <div class="d">0</div>
+      <div class="d">0</div>
+      <div class="d">0</div>
+    </div>
+    位訪問者，感謝關注「<span class="hl">夏以呦</span>」
+  </div>
+  <div class="bottom">
+    ➡️ Facebook：
+    <a href="https://www.facebook.com/share/17AK88o1eX/?mibextid=wwXIfr">夏以呦</a>｡.ﾟ:✿｡.ﾟ
+    專屬帳號：<a href="https://www.facebook.com/share/1CDVXnXBmp/?mibextid=wwXIfr">秦徹</a>｡.ﾟ:✿｡.ﾟ
+    妹妹帳號：<a href="https://www.facebook.com/share/18FyJfy4UP/?mibextid=wwXIfr">樂之時</a>｡.ﾟ:✿｡.ﾟ
+    妹夫帳號：<a href="https://www.facebook.com/share/1GCmTS2kem/?mibextid=wwXIfr">夏以晝</a>
+  </div>
+</div>
+
+<script>
+// 動態小花回來啦
+function createFlower() {
+  const f = document.createElement('div');
+  f.className = 'flower';
+  f.textContent = '🌸';
+  f.style.left = Math.random() * 100 + 'vw';
+  f.style.animationDuration = (Math.random() * 2 + 4) + 's';
+  document.body.appendChild(f);
+  setTimeout(() => f.remove(), 5000);
+}
+setInterval(createFlower, 400);
+</script>
+</body>
+</html>
