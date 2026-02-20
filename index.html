@@ -111,13 +111,13 @@ function createFlower(){
 }
 setInterval(createFlower,400);
 
-// 訪客數字滾動動畫
+// 訪客數字滾動動畫（從1開始）
 const targetCount = 8880; // 替換成你的真實訪客數
 const duration = 2000; // 動畫持續時間（毫秒）
 const steps = 60; // 動畫幀數
 const stepDuration = duration / steps;
-let currentCount = 0;
-const increment = targetCount / steps;
+let currentCount = 1; // 起始數字改為1
+const increment = (targetCount - 1) / steps; // 調整增量
 
 const d1 = document.getElementById('d1');
 const d2 = document.getElementById('d2');
