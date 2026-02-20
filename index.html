@@ -5,11 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>小秦小呦同學錄</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:"Noto Sans TC",sans-serif}
+*{margin:0;padding:0;box-sizing:border-box;font-family:"PingFang SC","Microsoft JhengHei",sans-serif;}
 html,body{
-  width:100%;
-  height:60px; /* 稍微增加高度，讓兩行有更多空間 */
-  background:#e3f2fd; /* 淺藍色背景 */
+  width: 2000px;
+  height: 1200px;
+  background:#e3f2fd;
+  background-image: url("https://www.transparenttextures.com/patterns/cat.svg");
   display:flex;
   align-items:center;
   justify-content:center;
@@ -18,58 +19,63 @@ html,body{
 .box{
   width:100%;
   text-align:center;
-  padding:4px 8px;
+  padding:20px;
   position:relative;
   z-index:2;
 }
 .line-top{
+  font-size:24px;
+  font-weight:500;
+  margin-bottom:16px;
   display:flex;
   align-items:center;
   justify-content:center;
-  gap:4px;
-  font-size:14px;
+  gap:8px;
   white-space:nowrap;
-  margin-bottom:8px; /* 增加行間距，讓兩行空格更開 */
 }
 .line-bottom{
+  font-size:24px;
+  font-weight:500;
   display:flex;
   align-items:center;
   justify-content:center;
-  gap:4px;
-  font-size:14px;
+  gap:8px;
   white-space:nowrap;
 }
 .hl{
   background:linear-gradient(90deg,#ff80ab,#4fc3f7);
   color:#fff;
-  padding:2px 6px;
-  border-radius:4px;
-  font-weight:500;
+  padding:6px 12px;
+  border-radius:12px;
+  font-weight:bold;
 }
-.num{display:flex;gap:3px;}
+.num{
+  display:flex;
+  gap:6px;
+}
 .d{
-  width:22px;
-  height:26px;
+  width:40px;
+  height:46px;
   background:#fff;
   border:2px solid #f8bbd0;
-  font-size:14px;
+  border-radius:6px;
+  font-size:22px;
   font-weight:bold;
   color:#1976d2;
   display:flex;
   align-items:center;
   justify-content:center;
-  clip-path:polygon(25% 0%,75% 0%,100% 25%,100% 70%,75% 100%,25% 100%,0% 70%,0% 25%);
 }
 .flower {
   position:fixed;
-  font-size:10px;
+  font-size:16px;
   animation:flower-fall 5s linear infinite;
   pointer-events:none;
   z-index:1;
 }
 @keyframes flower-fall {
-  0% { transform: translateY(-5px) rotate(0deg); opacity:1; }
-  100% { transform: translateY(60px) rotate(720deg); opacity:0; }
+  0% { transform: translateY(-10px); opacity:1; }
+  100% { transform: translateY(1200px); opacity:0; }
 }
 </style>
 </head>
@@ -91,16 +97,15 @@ html,body{
 </div>
 
 <script>
-function createFlower() {
-  const f = document.createElement('div');
-  f.className = 'flower';
-  f.textContent = '🌸';
-  f.style.left = Math.random() * 100 + 'vw';
-  f.style.animationDuration = (Math.random() * 2 + 4) + 's';
+function createFlower(){
+  const f=document.createElement('div');
+  f.className='flower';
+  f.textContent='🌸';
+  f.style.left=Math.random()*100+'vw';
   document.body.appendChild(f);
-  setTimeout(() => f.remove(), 5000);
+  setTimeout(()=>f.remove(),5000);
 }
-setInterval(createFlower, 400);
+setInterval(createFlower,400);
 </script>
 </body>
 </html>
