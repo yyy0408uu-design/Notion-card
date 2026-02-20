@@ -9,10 +9,14 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "PingFang SC", "Microsoft JhengHei", sans-serif;
+  font-family: "PingFang SC","Microsoft JhengHei",sans-serif;
+}
+body {
+  display: flex;
+  justify-content: center;
 }
 
-/* 只保留底色區域，自適應寬度 */
+/* 🔥 只保留底色這一塊，自適應寬度 */
 #wrapper {
   width: 100%;
   height: 125px;
@@ -30,51 +34,44 @@
   align-items: center;
   justify-content: center;
   padding: 0 10px;
-  z-index: 2;
 }
 
-/* 第一行強制不換行 */
+/* 🔥 絕對不換行 */
 .line-top {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 6px;
   white-space: nowrap;
-  font-size: clamp(14px, 2vw, 18px);
-  font-weight: 500;
-  margin-bottom: 8px;
+  font-size: clamp(14px, 3vw, 18px);
+  margin-bottom: 6px;
 }
-
 .line-bottom {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: clamp(13px, 1.8vw, 16px);
-  font-weight: 500;
+  font-size: clamp(13px, 2.5vw, 16px);
 }
 
 .hl {
-  background: linear-gradient(90deg, #ff80ab, #4fc3f7);
+  background: linear-gradient(90deg,#ff80ab,#4fc3f7);
   color: #fff;
   padding: 4px 8px;
   border-radius: 8px;
   font-weight: bold;
   white-space: nowrap;
 }
-
 .num {
   display: flex;
   gap: 3px;
 }
-
 .d {
-  width: clamp(20px, 3vw, 24px);
-  height: clamp(20px, 3vw, 26px);
+  width: clamp(20px, 4vw, 24px);
+  height: clamp(20px, 4vw, 26px);
   background: #fff;
   border: 2px solid #f8bbd0;
   border-radius: 4px;
-  font-size: clamp(12px, 2vw, 14px);
-  font-weight: bold;
+  font-size: clamp(12px, 3vw, 14px);
   color: #1976d2;
   display: flex;
   align-items: center;
@@ -86,12 +83,10 @@
   font-size: 8px;
   animation: flower-fall 5s linear infinite;
   pointer-events: none;
-  z-index: 1;
 }
-
 @keyframes flower-fall {
-  0% { transform: translateY(-5px); opacity: 1; }
-  100% { transform: translateY(125px); opacity: 0; }
+  0% { transform: translateY(-5px); opacity:1; }
+  100% { transform: translateY(125px); opacity:0; }
 }
 </style>
 </head>
@@ -116,32 +111,27 @@
 </div>
 
 <script>
-// 櫻花動畫
-function createFlower() {
-  const f = document.createElement('div');
-  f.className = 'flower';
-  f.textContent = '🌸';
-  f.style.left = Math.random() * 100 + '%';
+// 櫻花
+function createFlower(){
+  const f=document.createElement('div');
+  f.className='flower';
+  f.textContent='🌸';
+  f.style.left = Math.random()*100+'%';
   document.getElementById('wrapper').appendChild(f);
-  setTimeout(() => f.remove(), 5000);
+  setTimeout(()=>f.remove(),5000);
 }
-setInterval(createFlower, 400);
+setInterval(createFlower,400);
 
 // ========== 設定 ==========
-const I_AM_EDITOR = true; // 你不會增加次數
-const START_COUNT = 0;   // 從0開始
+const I_AM_EDITOR = true;
+const START_COUNT = 0;
 
-// 歸零
 localStorage.removeItem("visitorCount");
 
 function getVisitorCount() {
   let count = localStorage.getItem("visitorCount");
   if (count === null) count = START_COUNT;
-
-  if (I_AM_EDITOR) {
-    return count;
-  }
-
+  if (I_AM_EDITOR) return count;
   count = parseInt(count) + 1;
   localStorage.setItem("visitorCount", count);
   return count;
