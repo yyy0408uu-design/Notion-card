@@ -8,8 +8,8 @@
 *{margin:0;padding:0;box-sizing:border-box;font-family:"Noto Sans TC",sans-serif}
 html,body{
   width:100%;
-  height:100%;
-  background:#fdf2f8;
+  height:60px; /* 再壓扁一點，上下更窄 */
+  background:#fdf2f8; /* 保持你原本的粉色背景 */
   display:flex;
   align-items:center;
   justify-content:center;
@@ -18,7 +18,7 @@ html,body{
 .box{
   width:100%;
   text-align:center;
-  padding:12px 20px;
+  padding:4px 8px; /* 減少內邊距，讓上下更窄 */
   position:relative;
   z-index:2;
 }
@@ -26,24 +26,25 @@ html,body{
   display:flex;
   align-items:center;
   justify-content:center;
-  gap:6px;
-  font-size:16px;
+  gap:4px;
+  font-size:13px; /* 稍微縮小字體，避免擠壓 */
   white-space:nowrap;
+  margin-bottom:3px; /* 減少行間距 */
 }
 .hl{
   background:linear-gradient(90deg,#ff80ab,#4fc3f7);
   color:#fff;
-  padding:4px 10px;
-  border-radius:6px;
+  padding:2px 6px;
+  border-radius:4px;
   font-weight:500;
 }
-.num{display:flex;gap:4px;}
+.num{display:flex;gap:3px;}
 .d{
-  width:26px;
-  height:32px;
+  width:20px;
+  height:24px;
   background:#fff;
   border:2px solid #f8bbd0;
-  font-size:17px;
+  font-size:13px;
   font-weight:bold;
   color:#1976d2;
   display:flex;
@@ -52,25 +53,28 @@ html,body{
   clip-path:polygon(25% 0%,75% 0%,100% 25%,100% 70%,75% 100%,25% 100%,0% 70%,0% 25%);
 }
 .bottom{
-  margin-top:8px;
-  font-size:12px;
+  font-size:10px; /* 縮小字體 */
   color:#777;
+  margin-bottom:2px;
 }
 .bottom a{
   color:#1976d2;
   text-decoration:none;
 }
-
+.note {
+  font-size:8px;
+  color:#ff69b4;
+}
 .flower {
   position:fixed;
-  font-size:14px;
+  font-size:10px;
   animation:flower-fall 5s linear infinite;
   pointer-events:none;
   z-index:1;
 }
 @keyframes flower-fall {
-  0% { transform: translateY(-10px) rotate(0deg); opacity:1; }
-  100% { transform: translateY(300px) rotate(720deg); opacity:0; }
+  0% { transform: translateY(-5px) rotate(0deg); opacity:1; }
+  100% { transform: translateY(60px) rotate(720deg); opacity:0; }
 }
 </style>
 </head>
@@ -87,11 +91,14 @@ html,body{
     位訪問者，感謝閱讀「<span class="hl">Our Love Story♥️🤍</span>」
   </div>
   <div class="bottom">
-    ➡️ Facebook：
+    Facebook：
     <a href="https://www.facebook.com/share/17AK88o1eX/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">夏以呦</a>｡.ﾟ:✿｡.ﾟ
     專屬帳號：<a href="https://www.facebook.com/share/1CDVXnXBmp/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">秦徹</a>｡.ﾟ:✿｡.ﾟ
     妹妹帳號：<a href="https://www.facebook.com/share/18FyJfy4UP/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">樂之時</a>｡.ﾟ:✿｡.ﾟ
     妹夫帳號：<a href="https://www.facebook.com/share/1GCmTS2kem/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">夏以晝</a>
+  </div>
+  <div class="note">
+    連結🔗要長按新開頁面，不能直接點擊
   </div>
 </div>
 
