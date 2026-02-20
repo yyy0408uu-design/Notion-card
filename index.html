@@ -6,21 +6,27 @@
 <title>小秦小呦同學錄</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:"PingFang SC","Microsoft JhengHei",sans-serif;}
-html,body{
+#wrapper {
   width: 1000px;
   height: 125px;
   background:#e3f2fd;
   background-image: url("https://www.transparenttextures.com/patterns/cat.svg");
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: relative;
   overflow: hidden;
 }
 .box{
   width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   text-align: center;
   padding: 0 16px;
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   z-index: 2;
 }
 .line-top{
@@ -70,7 +76,7 @@ html,body{
   justify-content:center;
 }
 .flower {
-  position:fixed;
+  position:absolute;
   font-size:8px;
   animation:flower-fall 5s linear infinite;
   pointer-events:none;
@@ -83,19 +89,21 @@ html,body{
 </style>
 </head>
 <body>
-<div class="box">
-  <div class="line-top">
-    你是「<span class="hl">小秦小呦同學錄</span>」的第
-    <div class="num">
-      <div class="d" id="d1">0</div>
-      <div class="d" id="d2">0</div>
-      <div class="d" id="d3">0</div>
-      <div class="d" id="d4">0</div>
+<div id="wrapper">
+  <div class="box">
+    <div class="line-top">
+      你是「<span class="hl">小秦小呦同學錄</span>」的第
+      <div class="num">
+        <div class="d" id="d1">0</div>
+        <div class="d" id="d2">0</div>
+        <div class="d" id="d3">0</div>
+        <div class="d" id="d4">0</div>
+      </div>
+      位訪問者
     </div>
-    位訪問者
-  </div>
-  <div class="line-bottom">
-    感謝閱讀「<span class="hl">Our Love Story♥️🤍</span>」
+    <div class="line-bottom">
+      感謝閱讀「<span class="hl">Our Love Story❤️🤍</span>」
+    </div>
   </div>
 </div>
 
@@ -105,17 +113,22 @@ function createFlower(){
   const f=document.createElement('div');
   f.className='flower';
   f.textContent='🌸';
-  f.style.left=Math.random()*100+'vw';
-  document.body.appendChild(f);
+  f.style.left=Math.random()*1000+'px';
+  document.getElementById('wrapper').appendChild(f);
   setTimeout(()=>f.remove(),5000);
 }
 setInterval(createFlower,400);
 
-// ====== 自動訪客計數器（永久保存）======
+// ====== 自動訪客計數器（從0開始）======
+const START_COUNT = 0; // 起始數字設為 0
+
+// 頁面加載時自動清除之前的記錄，確保從0開始
+localStorage.removeItem("visitorCount");
+
 function getVisitorCount() {
   let count = localStorage.getItem("visitorCount");
-  if (!count) {
-    count = 0;
+  if (count === null) {
+    count = START_COUNT;
   }
   count = parseInt(count) + 1;
   localStorage.setItem("visitorCount", count);
