@@ -111,35 +111,27 @@ function createFlower(){
 }
 setInterval(createFlower,400);
 
-// 訪客數字滾動動畫（從1開始）
-const targetCount = 8880; // 替換成你的真實訪客數
-const duration = 2000; // 動畫持續時間（毫秒）
-const steps = 60; // 動畫幀數
-const stepDuration = duration / steps;
-let currentCount = 1; // 起始數字改為1
-const increment = (targetCount - 1) / steps; // 調整增量
-
-const d1 = document.getElementById('d1');
-const d2 = document.getElementById('d2');
-const d3 = document.getElementById('d3');
-const d4 = document.getElementById('d4');
-
-function updateDigits(count) {
-  const str = count.toString().padStart(4, '0');
-  d1.textContent = str[0];
-  d2.textContent = str[1];
-  d3.textContent = str[2];
-  d4.textContent = str[3];
+// ====== 自動訪客計數器（永久保存）======
+function getVisitorCount() {
+  let count = localStorage.getItem("visitorCount");
+  if (!count) {
+    count = 0;
+  }
+  count = parseInt(count) + 1;
+  localStorage.setItem("visitorCount", count);
+  return count;
 }
 
-const interval = setInterval(() => {
-  currentCount += increment;
-  if (currentCount >= targetCount) {
-    currentCount = targetCount;
-    clearInterval(interval);
-  }
-  updateDigits(Math.floor(currentCount));
-}, stepDuration);
+function showCount(num) {
+  let str = num.toString().padStart(4, "0");
+  document.getElementById("d1").textContent = str[0];
+  document.getElementById("d2").textContent = str[1];
+  document.getElementById("d3").textContent = str[2];
+  document.getElementById("d4").textContent = str[3];
+}
+
+let total = getVisitorCount();
+showCount(total);
 </script>
 </body>
 </html>
