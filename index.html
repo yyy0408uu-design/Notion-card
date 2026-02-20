@@ -87,10 +87,10 @@ html,body{
   <div class="line-top">
     你是「<span class="hl">小秦小呦同學錄</span>」的第
     <div class="num">
-      <div class="d">0</div>
-      <div class="d">0</div>
-      <div class="d">0</div>
-      <div class="d">0</div>
+      <div class="d" id="d1">0</div>
+      <div class="d" id="d2">0</div>
+      <div class="d" id="d3">0</div>
+      <div class="d" id="d4">0</div>
     </div>
     位訪問者
   </div>
@@ -100,6 +100,7 @@ html,body{
 </div>
 
 <script>
+// 櫻花動畫
 function createFlower(){
   const f=document.createElement('div');
   f.className='flower';
@@ -109,6 +110,36 @@ function createFlower(){
   setTimeout(()=>f.remove(),5000);
 }
 setInterval(createFlower,400);
+
+// 訪客數字滾動動畫
+const targetCount = 88801; // 替換成你的真實訪客數
+const duration = 2000; // 動畫持續時間（毫秒）
+const steps = 60; // 動畫幀數
+const stepDuration = duration / steps;
+let currentCount = 0;
+const increment = targetCount / steps;
+
+const d1 = document.getElementById('d1');
+const d2 = document.getElementById('d2');
+const d3 = document.getElementById('d3');
+const d4 = document.getElementById('d4');
+
+function updateDigits(count) {
+  const str = count.toString().padStart(4, '0');
+  d1.textContent = str[0];
+  d2.textContent = str[1];
+  d3.textContent = str[2];
+  d4.textContent = str[3];
+}
+
+const interval = setInterval(() => {
+  currentCount += increment;
+  if (currentCount >= targetCount) {
+    currentCount = targetCount;
+    clearInterval(interval);
+  }
+  updateDigits(Math.floor(currentCount));
+}, stepDuration);
 </script>
 </body>
 </html>
