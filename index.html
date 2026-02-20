@@ -12,10 +12,10 @@
   font-family: "PingFang SC","Microsoft JhengHei",sans-serif;
 }
 
-/* 🔥 關鍵：讓整個 HTML 區塊高度完全貼合底色 */
+/* 高度固定 100px，沒有多餘空白 */
 html, body {
   width: 100%;
-  height: 100%;
+  height: 100px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -23,7 +23,7 @@ html, body {
 
 #wrapper {
   width: 100%;
-  height: 100%; /* 讓底色填滿整個嵌入區塊 */
+  height: 100%;
   background: #e3f2fd;
   background-image: url("https://www.transparenttextures.com/patterns/cat.svg");
   position: relative;
@@ -92,7 +92,7 @@ html, body {
 }
 @keyframes flower-fall {
   0% { transform: translateY(-5px); opacity:1; }
-  100% { transform: translateY(100%); opacity:0; }
+  100% { transform: translateY(100px); opacity:0; }
 }
 </style>
 </head>
@@ -111,7 +111,7 @@ html, body {
       位訪問者
     </div>
     <div class="line-bottom">
-      感謝閱讀「<span class="hl">Our Love Story❤️🤍</span>」
+      感謝閱讀「<span class="hl">Our Love Story♥️🤍</span>」
     </div>
   </div>
 </div>
