@@ -7,40 +7,42 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:"PingFang SC","Microsoft JhengHei",sans-serif;}
 html,body{
-  width: 100%; /* 改成 100%，自適應 Notion 嵌入框寬度 */
-  height: 120px; /* 適當拉高高度，避免文字被切 */
+  width: 100%;
+  height: 120px;
   background:#e3f2fd;
   background-image: url("https://www.transparenttextures.com/patterns/cat.svg");
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  overflow:hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 .box{
   width: 100%;
-  text-align:center;
-  padding:12px 16px;
-  position:relative;
-  z-index:2;
+  text-align: center;
+  padding: 0 16px;
+  position: relative;
+  z-index: 2;
 }
 .line-top{
-  font-size:16px; /* 稍微縮小字體，避免太擠 */
+  font-size:16px;
   font-weight:500;
-  margin-bottom:8px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  flex-wrap:wrap; /* 允許換行，避免被切 */
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
   gap:6px;
+  text-align: center;
 }
 .line-bottom{
   font-size:16px;
   font-weight:500;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  flex-wrap:wrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
   gap:6px;
+  text-align: center;
 }
 .hl{
   background:linear-gradient(90deg,#ff80ab,#4fc3f7);
