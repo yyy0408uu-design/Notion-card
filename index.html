@@ -6,88 +6,98 @@
 <title>小秦小呦同學錄</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:"PingFang SC","Microsoft JhengHei",sans-serif;}
+
 #wrapper {
-  width: 1000px;
+  width: 100%;
+  max-width: 2000px;
   height: 125px;
-  background:#e3f2fd;
+  background: #e3f2fd;
   background-image: url("https://www.transparenttextures.com/patterns/cat.svg");
   position: relative;
   overflow: hidden;
+  margin: 0 auto;
 }
-.box{
+
+.box {
   width: 100%;
   height: 100%;
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  text-align: center;
-  padding: 0 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 0 10px;
   z-index: 2;
 }
-.line-top{
-  font-size:16px;
-  font-weight:500;
-  margin-bottom: 12px;
+
+/* 第一行強制不換行 */
+.line-top {
+  width: 100%;
+  white-space: nowrap;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
-  gap:6px;
-  text-align: center;
+  gap: 6px;
+  font-size: clamp(14px, 2vw, 18px);
+  font-weight: 500;
+  margin-bottom: 8px;
 }
-.line-bottom{
-  font-size:16px;
-  font-weight:500;
+
+.line-bottom {
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
-  gap:6px;
-  text-align: center;
+  font-size: clamp(13px, 1.8vw, 16px);
+  font-weight: 500;
 }
-.hl{
-  background:linear-gradient(90deg,#ff80ab,#4fc3f7);
-  color:#fff;
-  padding:4px 8px;
-  border-radius:8px;
-  font-weight:bold;
-  white-space:nowrap;
+
+.hl {
+  background: linear-gradient(90deg,#ff80ab,#4fc3f7);
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-weight: bold;
+  white-space: nowrap;
 }
-.num{
-  display:flex;
-  gap:3px;
+
+.num {
+  display: flex;
+  gap: 3px;
 }
-.d{
-  width:24px;
-  height:26px;
-  background:#fff;
-  border:2px solid #f8bbd0;
-  border-radius:4px;
-  font-size:14px;
-  font-weight:bold;
-  color:#1976d2;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+
+.d {
+  width: clamp(20px, 3vw, 24px);
+  height: clamp(20px, 3vw, 26px);
+  background: #fff;
+  border: 2px solid #f8bbd0;
+  border-radius: 4px;
+  font-size: clamp(12px, 2vw, 14px);
+  font-weight: bold;
+  color: #1976d2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
 .flower {
-  position:absolute;
-  font-size:8px;
-  animation:flower-fall 5s linear infinite;
-  pointer-events:none;
-  z-index:1;
+  position: absolute;
+  font-size: 8px;
+  animation: flower-fall 5s linear infinite;
+  pointer-events: none;
+  z-index: 1;
 }
+
 @keyframes flower-fall {
   0% { transform: translateY(-5px); opacity:1; }
   100% { transform: translateY(125px); opacity:0; }
 }
 </style>
 </head>
+
 <body>
 <div id="wrapper">
   <div class="box">
@@ -113,37 +123,43 @@ function createFlower(){
   const f=document.createElement('div');
   f.className='flower';
   f.textContent='🌸';
-  f.style.left=Math.random()*1000+'px';
+  f.style.left = Math.random()*100+'%';
   document.getElementById('wrapper').appendChild(f);
   setTimeout(()=>f.remove(),5000);
 }
 setInterval(createFlower,400);
 
-// ====== 自動訪客計數器（從0開始）======
-const START_COUNT = 0; // 起始數字設為 0
+// ============== 你只要看這裡 ==============
+const I_AM_EDITOR = true;  // 你是編輯者 → 不會計次
+const START_COUNT = 0;     // 從 0 開始
 
-// 頁面加載時自動清除之前的記錄，確保從0開始
+// 歸零舊紀錄
 localStorage.removeItem("visitorCount");
 
 function getVisitorCount() {
   let count = localStorage.getItem("visitorCount");
-  if (count === null) {
-    count = START_COUNT;
+  if (count === null) count = START_COUNT;
+
+  // 編輯者：只讀不取，不+1
+  if (I_AM_EDITOR) {
+    return count;
   }
+
+  // 一般訪客：+1
   count = parseInt(count) + 1;
   localStorage.setItem("visitorCount", count);
   return count;
 }
 
 function showCount(num) {
-  let str = num.toString().padStart(4, "0");
+  const str = num.toString().padStart(4, "0");
   document.getElementById("d1").textContent = str[0];
   document.getElementById("d2").textContent = str[1];
   document.getElementById("d3").textContent = str[2];
   document.getElementById("d4").textContent = str[3];
 }
 
-let total = getVisitorCount();
+const total = getVisitorCount();
 showCount(total);
 </script>
 </body>
